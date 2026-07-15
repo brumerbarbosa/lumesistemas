@@ -3009,7 +3009,7 @@ section[data-screen-label="Galeria"] > .wrap > div:first-child > .h-sec {
 section[data-screen-label="Galeria"] > .wrap > .g3 {
   position: relative;
   display: block !important;
-  width: min(820px, calc(100vw - 48px));
+  width: min(980px, calc(100vw - 64px));
   height: clamp(520px, 58vw, 640px);
   margin: 0 auto;
 }
@@ -5077,7 +5077,7 @@ section[data-screen-label="CTA final"] > .cta-final-group-02 {
 
 @media (min-width: 761px) {
   .galeria-section-01 {
-    height: 760px;
+    height: 840px;
   }
 
   .galeria-group-01 {

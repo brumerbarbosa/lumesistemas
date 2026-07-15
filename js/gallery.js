@@ -112,31 +112,30 @@
     gsap.set(middle, { zIndex: 2 });
     gsap.set(back, { zIndex: 1 });
 
-    // 1. A janela da frente sai para baixo e esmaece completamente.
+    // A janela frontal cai enquanto as outras duas avançam juntas.
     timeline.to(front, {
       y: 128,
       opacity: 0,
       duration: 0.72,
       ease: 'power2.in',
-    });
+    }, 0);
 
-    // 2. Só depois que ela saiu, as duas janelas seguintes avançam.
-    timeline.set(middle, { zIndex: 3 });
-    timeline.set(back, { zIndex: 2 });
+    timeline.set(middle, { zIndex: 3 }, 0);
+    timeline.set(back, { zIndex: 2 }, 0);
     timeline.to(middle, {
       y: positions.front.y,
       scale: positions.front.scale,
-      duration: 0.68,
-      ease: 'power2.out',
-    });
+      duration: 0.72,
+      ease: 'power2.inOut',
+    }, 0);
     timeline.to(back, {
       y: positions.middle.y,
       scale: positions.middle.scale,
-      duration: 0.68,
-      ease: 'power2.out',
-    }, '<');
+      duration: 0.72,
+      ease: 'power2.inOut',
+    }, 0);
 
-    // 3. A janela que saiu reaparece atrás e sobe até o fundo da pilha.
+    // A janela que saiu reaparece atrás e sobe até o fundo da pilha.
     timeline.set(front, { zIndex: 1, y: 92, scale: positions.back.scale, opacity: 0 });
     timeline.to(front, {
       y: positions.back.y,
