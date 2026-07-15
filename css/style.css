@@ -4268,12 +4268,12 @@ section h2.h-display {
   position:absolute;
   z-index:0;
   top:50%;
-  right:-7rem;
-  width:25rem;
-  height:25rem;
+  right:2rem;
+  width:44rem;
+  height:44rem;
   background:url("../assets/lume-icon.svg") center / contain no-repeat;
   filter:grayscale(1);
-  opacity:.14;
+  opacity:.09;
   transform:translateY(-50%);
   pointer-events:none;
 }
@@ -4284,7 +4284,7 @@ section h2.h-display {
   min-height:25rem;
   padding:5rem 32px;
   display:grid;
-  grid-template-columns:minmax(12rem, .75fr) minmax(28rem, 1.45fr);
+  grid-template-columns:minmax(18rem, .85fr) minmax(28rem, 1.15fr);
   align-items:center;
   gap:4rem;
 }
@@ -4296,18 +4296,21 @@ section h2.h-display {
 }
 
 :not(#inline-style-scope-a):not(#inline-style-scope-b) .rodape-group-02 {
-  margin:3.5rem 0 0;
-  font-size:1rem;
+  max-width:21rem;
+  margin:1.5rem 0 0;
+  font-size:.9rem;
   line-height:1.5;
   color:#55574c;
   letter-spacing:0;
-  text-align:center;
+  text-align:left;
 }
 
 .footer-brand {
   display:flex;
-  align-items:center;
+  flex-direction:column;
   justify-content:center;
+  align-items:flex-start;
+  justify-self:start;
 }
 
 .footer-content {
@@ -4354,10 +4357,10 @@ section h2.h-display {
 
 @media (max-width: 760px) {
   :not(#inline-style-scope-a):not(#inline-style-scope-b) .rodape-footer-01::after {
-    right:-8rem;
-    width:19rem;
-    height:19rem;
-    opacity:.48;
+    right:-5rem;
+    width:30rem;
+    height:30rem;
+    opacity:.08;
   }
 
   :not(#inline-style-scope-a):not(#inline-style-scope-b) .rodape-group-01 {
@@ -4380,7 +4383,7 @@ section h2.h-display {
   }
 
   :not(#inline-style-scope-a):not(#inline-style-scope-b) .rodape-group-02 {
-    margin-top:2.75rem;
+    margin-top:1.25rem;
     font-size:.875rem;
   }
 }
@@ -4950,4 +4953,134 @@ html body .automacao-e-ia-section-01 .automacao-e-ia-group-05::before {
     rgba(20, 19, 16, .8) !important;
   -webkit-backdrop-filter: blur(2.5px);
   backdrop-filter: blur(2.5px);
+}
+/* Pricing eyebrow uses the supplied currency icon. */
+#planos .eyebrow::before {
+  width: 11px;
+  height: 18px;
+  flex: 0 0 11px;
+  background: #ff6500;
+  -webkit-mask: url("../assets/icon-sifrao.svg") center / contain no-repeat;
+  mask: url("../assets/icon-sifrao.svg") center / contain no-repeat;
+}
+/* Final CTA: soft white dot texture above the orange glow. */
+section[data-screen-label="CTA final"] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+section[data-screen-label="CTA final"]::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, .09) 1px, transparent 1.15px);
+  background-size: 16px 16px;
+  background-position: center;
+  opacity: .78;
+  mix-blend-mode: color-dodge;
+  -webkit-mask-image: radial-gradient(ellipse 78% 88% at 50% 50%, #000 48%, transparent 100%);
+  mask-image: radial-gradient(ellipse 78% 88% at 50% 50%, #000 48%, transparent 100%);
+}
+
+section[data-screen-label="CTA final"] > .cta-final-group-01 {
+  z-index: 0;
+}
+
+section[data-screen-label="CTA final"] > .cta-final-group-02 {
+  z-index: 2;
+}
+/* Hero screenshot: clean frame without a browser toolbar. */
+#top .hero-group-07 {
+  padding: 2px !important;
+  border: 1px solid rgba(255, 255, 255, .82) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .48) !important;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 24px 60px rgba(114, 48, 12, .18) !important;
+}
+
+#top .hero-group-07 > .shared-group-01 {
+  overflow: hidden;
+  border: 1px solid rgba(223, 218, 211, .88);
+  border-radius: 13px;
+  background: #f7f7f7;
+}
+
+#top .hero-group-08 {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  #top .hero-group-07 {
+    padding: 2px !important;
+    border-radius: 12px !important;
+  }
+
+  #top .hero-group-07 > .shared-group-01 {
+    border-radius: 10px;
+  }
+}
+/* Reusable orange gradient for selected title phrases. */
+.text-gradient-orange {
+  color: #ff6500;
+  background: linear-gradient(90deg, #ff6500 0%, #ff4400 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (forced-colors: active) {
+  .text-gradient-orange {
+    color: CanvasText;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+/* Keep the mobile product image offset on larger screens. */
+.como-funciona-visual {
+  transform: translateX(60px);
+}
+
+@media (max-width: 760px) {
+  .como-funciona-visual {
+    transform: none;
+  }
+}
+
+/* Gallery stage ends while the animated windows are still passing through. */
+.galeria-section-01 {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.galeria-section-01::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, .12) 1px, transparent 1.15px);
+  background-size: 18px 18px;
+  opacity: .55;
+  pointer-events: none;
+}
+
+.galeria-group-01 {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 761px) {
+  .galeria-section-01 {
+    height: 760px;
+  }
+
+  .galeria-group-01 {
+    padding-bottom: 0 !important;
+  }
 }
