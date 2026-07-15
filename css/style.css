@@ -1815,7 +1815,7 @@ nav .navlinks > a:last-child {
 #top > div:first-child {
   background-image: radial-gradient(rgba(255, 255, 255, .78) 1px, transparent 1px) !important;
   background-size: 16px 16px !important;
-  background-position: center !important;
+  background-position: 0 50%;
   background-repeat: repeat !important;
   -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 70%, transparent 100%) !important;
   mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 70%, transparent 100%) !important;
@@ -4386,3 +4386,568 @@ section h2.h-display {
 }
 
 /* === Extracted inline styles: end === */
+
+/* Nav links mirror the footer's simple color-and-slide hover. */
+nav .navlinks > a.nav-link-02 {
+  text-decoration: none !important;
+  transition: color .22s ease, transform .22s ease;
+}
+
+nav .navlinks > a.nav-link-02:hover,
+nav .navlinks > a.nav-link-02:focus-visible {
+  color: #ff6500 !important;
+  text-decoration: none !important;
+  transform: translateX(.2rem);
+}
+
+nav .navlinks > a.nav-link-02:active {
+  transform: translateX(0);
+}
+
+nav a:hover {
+  text-decoration: none !important;
+}
+
+/* Continuous rightward drift for the hero dot layer. */
+#top > div.hero-group-01 {
+  animation: hero-dots-drift 18s linear infinite !important;
+  will-change: background-position;
+}
+
+@keyframes hero-dots-drift {
+  from { background-position: 0 50%; }
+  to { background-position: 160px 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #top > div.hero-group-01 {
+    animation: none !important;
+    background-position: 0 50%;
+    will-change: auto;
+  }
+}
+
+/* Real dashboard screenshot inside the hero browser frame. */
+#top .hero-group-07 > .shared-group-01 {
+  aspect-ratio: 1911 / 905;
+}
+
+#top #hero-shot {
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+#top #hero-shot > .hero-dashboard-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+/* Comparison entrance and permanent sonar transition. */
+#problema > div.g2::before,
+#problema > div.g2::after {
+  content: none !important;
+  display: none !important;
+}
+
+#problema > div.g2 > .problema-transition-icon {
+  --arrow-rotation: 0deg;
+  position: absolute;
+  z-index: 8;
+  top: 50%;
+  left: 50%;
+  width: 80px !important;
+  height: 80px !important;
+  display: grid;
+  place-items: center;
+  overflow: visible !important;
+  padding: 0 !important;
+  border: 1px solid #ebe4d9 !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  box-shadow: 0 9px 24px rgba(74, 53, 33, .16) !important;
+  transform: translate(-50%, -50%) rotate(var(--arrow-rotation));
+  pointer-events: none;
+  isolation: isolate;
+}
+
+#problema .problema-transition-icon > img {
+  position: relative;
+  z-index: 2;
+  width: 58px;
+  height: 58px;
+  box-sizing: border-box;
+  display: block;
+  padding: 18px 14px;
+  border-radius: 50%;
+  background: #f06422;
+}
+
+#problema .problema-transition-icon::before,
+#problema .problema-transition-icon::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 10px;
+  border: 2px solid rgba(240, 100, 34, .6);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#problema.has-problema-animation .problema-group-02,
+#problema.has-problema-animation .problema-group-04 {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity .72s ease, transform .78s cubic-bezier(.2, .75, .25, 1);
+}
+
+#problema.has-problema-animation .problema-group-02 {
+  transform: translateX(-52px) scale(.98);
+}
+
+#problema.has-problema-animation .problema-group-04 {
+  transform: translateX(52px) scale(.98);
+  transition-delay: .14s;
+}
+
+#problema.has-problema-animation .problema-transition-icon {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(var(--arrow-rotation)) scale(.42);
+  will-change: opacity, transform;
+  transition: opacity .42s ease .88s, transform .58s cubic-bezier(.2, 1.45, .35, 1) .88s;
+}
+
+#problema.has-problema-animation.is-problema-visible .problema-group-02,
+#problema.has-problema-animation.is-problema-visible .problema-group-04 {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+#problema.has-problema-animation.is-problema-visible .problema-transition-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(var(--arrow-rotation)) scale(1);
+}
+
+#problema.is-problema-visible .problema-transition-icon > img {
+  animation: problema-arrow-breathe 1.8s ease-in-out 1.35s infinite;
+}
+
+#problema.is-problema-visible .problema-transition-icon::before {
+  animation: problema-sonar 2.2s ease-out 1.25s infinite;
+}
+
+#problema.is-problema-visible .problema-transition-icon::after {
+  animation: problema-sonar 2.2s ease-out 2.35s infinite;
+}
+
+@keyframes problema-sonar {
+  0% {
+    opacity: .58;
+    transform: scale(.82);
+  }
+  78%, 100% {
+    opacity: 0;
+    transform: scale(1.72);
+  }
+}
+
+@keyframes problema-arrow-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@media (max-width: 760px) {
+  #problema > div.g2 > .problema-transition-icon {
+    --arrow-rotation: 90deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #problema.has-problema-animation .problema-group-02,
+  #problema.has-problema-animation .problema-group-04,
+  #problema.has-problema-animation .problema-transition-icon {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    transition: none;
+    will-change: auto;
+  }
+
+  #problema.has-problema-animation .problema-transition-icon {
+    transform: translate(-50%, -50%) rotate(var(--arrow-rotation)) scale(1);
+  }
+
+  #problema .problema-transition-icon > img,
+  #problema .problema-transition-icon::before,
+  #problema .problema-transition-icon::after {
+    animation: none !important;
+  }
+}
+/* Como funciona: six-step flow with the mobile product view. */
+section[data-screen-label="Como funciona"] > .wrap {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr);
+  grid-template-areas:
+    "flow-title flow-visual"
+    "flow-steps flow-visual";
+  column-gap: clamp(44px, 6vw, 88px);
+  align-items: center;
+  padding: 104px 32px 0 !important;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > .shared-group-03 {
+  grid-area: flow-title;
+  max-width: 680px !important;
+  margin: 0 0 34px !important;
+  text-align: left !important;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > .shared-group-03 > .h-sec {
+  max-width: 680px !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  text-align: left !important;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 {
+  grid-area: flow-steps;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: none;
+  margin: 0 0 92px !important;
+  padding: 0 !important;
+  overflow: visible;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 > div,
+section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 > div:first-child {
+  position: relative;
+  z-index: 1;
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: start;
+  gap: 14px;
+  width: auto;
+  min-width: 0;
+  min-height: 112px;
+  height: auto;
+  margin: 0 !important;
+  padding: 18px 17px !important;
+  border: 1px solid rgba(255, 255, 255, .58) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .055) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transform: none;
+  transition: background-color .24s ease, border-color .24s ease, transform .24s ease;
+  will-change: transform;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01:hover > div:not(:hover) {
+  opacity: 1 !important;
+  transform: none;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 > div:hover {
+  z-index: 2;
+  min-width: 0;
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, .9) !important;
+  background: rgba(255, 255, 255, .12) !important;
+  box-shadow: none !important;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 > div > .mono-num {
+  width: 42px !important;
+  height: auto !important;
+  display: block !important;
+  flex: none !important;
+  margin: -2px 0 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  font-family: 'Funnel Display', sans-serif !important;
+  font-size: 34px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+
+section[data-screen-label="Como funciona"] .como-funciona-group-04 {
+  min-width: 0;
+  padding: 0 !important;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 > div .como-funciona-title-01 {
+  margin: 0 !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+}
+
+section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 > div .como-funciona-text-01 {
+  max-width: none !important;
+  margin: 5px 0 0 !important;
+  color: rgba(255, 255, 255, .82) !important;
+  font-size: 12.5px !important;
+  line-height: 1.42 !important;
+}
+
+section[data-screen-label="Como funciona"] .como-funciona-visual {
+  grid-area: flow-visual;
+  align-self: start;
+  justify-self: end;
+  width: min(116%, 560px);
+  min-width: 0;
+  margin: 0 -6% 0 0;
+}
+
+section[data-screen-label="Como funciona"] .como-funciona-visual > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 24px 28px rgba(82, 23, 0, .2));
+}
+
+@media (max-width: 980px) {
+  section[data-screen-label="Como funciona"] > .wrap {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr);
+    column-gap: 32px;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  section[data-screen-label="Como funciona"] > .wrap {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "flow-title"
+      "flow-visual"
+      "flow-steps";
+    padding: 76px 20px 72px !important;
+  }
+
+  section[data-screen-label="Como funciona"] > .wrap > .shared-group-03 {
+    margin-bottom: 30px !important;
+  }
+
+  section[data-screen-label="Como funciona"] .como-funciona-visual {
+    justify-self: center;
+    width: min(100%, 430px);
+    margin: 0 0 34px;
+  }
+
+  section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 {
+    grid-template-columns: 1fr;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section[data-screen-label="Como funciona"] > .wrap > div.como-funciona-group-01 > div {
+    transition: none;
+    will-change: auto;
+  }
+}
+
+/* Automation and AI: clean standalone icons and brighter color-dodge dot layer. */
+section[data-screen-label="AutomaÃ§Ã£o e IA"]::before {
+  background-image: radial-gradient(rgba(255, 255, 255, .14) 1.15px, transparent 1.2px) !important;
+  opacity: .9;
+  mix-blend-mode: color-dodge;
+}
+
+section[data-screen-label="AutomaÃ§Ã£o e IA"] .g3 > div > div:first-child {
+  width: 42px !important;
+  height: 42px !important;
+  margin-bottom: 14px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+section[data-screen-label="AutomaÃ§Ã£o e IA"] .g3 > div:nth-child(n) > div:first-child {
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+section[data-screen-label="AutomaÃ§Ã£o e IA"] .g3 > div > div:first-child::before {
+  width: 28px !important;
+  height: 28px !important;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .24));
+}
+
+section[data-screen-label="AutomaÃ§Ã£o e IA"] .g3 > div:nth-child(2) > div:first-child::before {
+  background-image: url("../assets/icon-whatsapp.svg") !important;
+}
+
+/* Automation section: standalone icons and brighter color-dodge dots. */
+.automacao-e-ia-section-01 {
+  isolation: isolate;
+}
+
+.automacao-e-ia-section-01::before {
+  background-image: radial-gradient(rgba(255, 255, 255, .11) 1.1px, transparent 1.2px) !important;
+  opacity: .92;
+  mix-blend-mode: color-dodge;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-03 > .automacao-e-ia-group-04 > .automacao-e-ia-group-05 {
+  width: 38px !important;
+  height: 38px !important;
+  display: grid !important;
+  place-items: center;
+  margin-bottom: 14px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  font-size: 0 !important;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-03 > .automacao-e-ia-group-04 > .automacao-e-ia-group-05::before {
+  content: "";
+  display: block;
+  width: 32px !important;
+  height: 32px !important;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: none;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04:nth-child(1) > .automacao-e-ia-group-05::before {
+  background-image: url("../assets/icon-orcamentista.svg") !important;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04:nth-child(2) > .automacao-e-ia-group-05::before {
+  background-image: url("../assets/icon-whatsapp.svg") !important;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04:nth-child(3) > .automacao-e-ia-group-05::before {
+  background-image: url("../assets/icon-nota-fiscal.svg") !important;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04:nth-child(4) > .automacao-e-ia-group-05::before {
+  background-image: url("../assets/icon-galeria.svg") !important;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04:nth-child(5) > .automacao-e-ia-group-05::before {
+  background-image: url("../assets/icon-producao.svg") !important;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04:nth-child(6) > .automacao-e-ia-group-05::before {
+  background-image: url("../assets/icon-offline.svg") !important;
+}
+/* Automation section: luminous background and border-only card reflection. */
+.automacao-e-ia-section-01 > .automacao-e-ia-group-01 {
+  z-index: 0;
+  background:
+    radial-gradient(68% 92% at 5% 8%, rgba(121, 36, 255, .62) 0%, rgba(82, 0, 166, .32) 30%, transparent 68%),
+    radial-gradient(66% 92% at 100% 100%, rgba(255, 101, 0, .58) 0%, rgba(255, 68, 0, .28) 32%, transparent 70%) !important;
+  opacity: .98;
+  mix-blend-mode: screen;
+  filter: saturate(1.35) brightness(1.16);
+}
+
+html body .automacao-e-ia-section-01 .automacao-e-ia-group-02 .automacao-e-ia-group-03 > .automacao-e-ia-group-04 > .automacao-e-ia-group-05 {
+  width: 40px !important;
+  height: 40px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html body .automacao-e-ia-section-01 .automacao-e-ia-group-05::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+}
+
+html body .automacao-e-ia-section-01 .automacao-e-ia-group-05::before {
+  width: 34px !important;
+  height: 34px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04 {
+  position: relative;
+  isolation: isolate;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  padding: .75px;
+  border-radius: inherit;
+  background: linear-gradient(115deg,
+    transparent 18%,
+    rgba(255, 255, 255, .12) 36%,
+    rgba(255, 255, 255, .72) 50%,
+    rgba(255, 255, 255, .12) 64%,
+    transparent 82%);
+  background-size: 280% 100%;
+  background-position: 100% 50%;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity .24s ease;
+}
+
+.automacao-e-ia-section-01 .automacao-e-ia-group-04:hover::after,
+.automacao-e-ia-section-01 .automacao-e-ia-group-04:focus-within::after {
+  opacity: 1;
+  animation: automacao-border-light 1.2s ease-out 1 forwards;
+}
+
+@keyframes automacao-border-light {
+  from { background-position: 130% 50%; }
+  to { background-position: -130% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .automacao-e-ia-section-01 .automacao-e-ia-group-04:hover::after,
+  .automacao-e-ia-section-01 .automacao-e-ia-group-04:focus-within::after {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+/* Automation cards: translucent surface with softly blurred dots behind. */
+.automacao-e-ia-section-01 .automacao-e-ia-group-03 > .automacao-e-ia-group-04 {
+  background:
+    radial-gradient(115% 90% at 100% 100%, rgba(255, 101, 0, .1), transparent 68%),
+    rgba(20, 19, 16, .8) !important;
+  -webkit-backdrop-filter: blur(2.5px);
+  backdrop-filter: blur(2.5px);
+}

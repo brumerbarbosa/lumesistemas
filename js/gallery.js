@@ -34,6 +34,24 @@
     }
   }
 
+  const problemSection = document.querySelector('#problema');
+  if (problemSection) {
+    problemSection.classList.add('has-problema-animation');
+
+    const revealProblem = () => problemSection.classList.add('is-problema-visible');
+
+    if ('IntersectionObserver' in window) {
+      const problemObserver = new IntersectionObserver((entries, observer) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        revealProblem();
+        observer.disconnect();
+      }, { threshold: 0.24 });
+      problemObserver.observe(problemSection.querySelector('.problema-group-01'));
+    } else {
+      revealProblem();
+    }
+  }
+
   const section = document.querySelector('[data-screen-label="Galeria"]');
   const deck = section?.querySelector('.g3');
   const cards = deck ? [...deck.children] : [];
